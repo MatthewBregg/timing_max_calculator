@@ -1,10 +1,11 @@
+
 <div> <a href="http://torukmakto4.blogspot.com/2018/02/motor-tech-intro-to-closed-loop-speed.html">Calculation derived from here </a>  </div>
 <br> </br>
 
-<form>
-  Desired RPM: <input type="number" name="desired_rpm" id="desired_rpm_id" onChange="calculateRpm();"><br>
-</form>
+Desired RPM: <input type="number" name="desired_rpm" id="desired_rpm_id" onChange="calculateRpm();"><br>
+<button <type="button" onChange="calculateRpm();"> Recalculate!</button>
 
+<br> </br>
 <div> Set Timing Max To: <span id="result"></span> </div>
     
 <script>
@@ -15,3 +16,4 @@ function calculateRpm() {
   document.getElementById("result").innerHTML = hex_timing_max
 }
 </script>
+

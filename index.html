@@ -1,12 +1,10 @@
-
 <h1> SimonK Closed Loop RPM Calculator </h1>
 <div> <a href="http://torukmakto4.blogspot.com/2018/02/motor-tech-intro-to-closed-loop-speed.html">Calculation derived from here </a>  </div>
 <br> </br>
 
-
-
 Desired RPM: <input type="number" name="desired_rpm" id="desired_rpm_id" onChange="calculateRpm();"><br>
-<button <type="button" onChange="calculateRpm();"> Recalculate!</button>
+Motor Pole Pairs (7 is common): <input type="number" name="pole_pairs" id="pole_pair_ids" value="7" onChange="calculateRpm();"><br>
+<button type="button" onChange="calculateRpm();"> Recalculate!</button>
 
 <br> </br>
 <div> Set Timing Max To: <span id="result"></span> </div>
@@ -14,9 +12,9 @@ Desired RPM: <input type="number" name="desired_rpm" id="desired_rpm_id" onChang
 <script>
 function calculateRpm() {
   let desired_rpm = document.getElementById("desired_rpm_id").value;
-  let timing_max = Math.floor(((4 * 10000000)/desired_rpm)/7);
+  let pole_pairs = document.getElementById("pole_pair_ids").value;
+  let timing_max = Math.floor(((4 * 10000000)/desired_rpm)/pole_pairs);
   let hex_timing_max = timing_max.toString(16);
   document.getElementById("result").innerHTML = hex_timing_max
 }
 </script>
-

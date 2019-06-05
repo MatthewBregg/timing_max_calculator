@@ -1,8 +1,17 @@
+
+
 <p id="result">None</p>
 
-<script>
-let timing_max = Math.floor(((4 * 10000000)/25510)/7);
-let hex_timing_max = timing_max.toString(16);
-document.getElementById("result").innerHTML = hex_timing_max
-</script>
+<form>
+  Desired RPM: <input type="number" name="desired_rpm" id=desired_rpm_id" onChange="calculateRpm();"><br>
+</form>
 
+    
+<script>
+function calculateRpm() {
+  let desired_rpm = document.getElementById("desired_rpm_id").value;
+  let timing_max = Math.floor(((4 * 10000000)/25510)/7);
+  let hex_timing_max = timing_max.toString(16);
+  document.getElementById("result").innerHTML = hex_timing_max
+}
+</script>

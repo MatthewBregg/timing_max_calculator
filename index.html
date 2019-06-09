@@ -2,12 +2,23 @@
 <div> <a href="http://torukmakto4.blogspot.com/2018/02/motor-tech-intro-to-closed-loop-speed.html">Calculation derived from here </a>  </div>
 <br> </br>
 
+<h2> Get Timing Max From Desired RPM </h2>
 Desired RPM: <input type="number" name="desired_rpm" id="desired_rpm_id" onChange="calculateRpm();"><br>
 Motor Pole Pairs (7 is common): <input type="number" name="pole_pairs" id="pole_pair_ids" value="7" onChange="calculateRpm();"><br>
 <button type="button" onChange="calculateRpm();"> Recalculate!</button>
 
 <br> </br>
 <div> Set Timing Max To: <span id="result"></span> </div>
+
+
+<h2> Get Desired Rpm From a Timing Max Value </h2>
+
+Timing Max: <input type="text" name="timing_max" id="timing_max_id" onChange="ReverseCalculateRpm();"><br>
+Motor Pole Pairs (7 is common): <input type="number" name="pole_pairs_2" id="pole_pair_2_ids" value="7" onChange="ReverseCalculateRpm()"><br>
+<button type="button" onChange="ReverseCalculateRpm();"> Recalculate! </button>
+
+<br> </br>
+<div> Currently, the RPM is set to: <span id="result_2"></span> </div>
     
 <script>
 function calculateRpm() {
@@ -16,5 +27,12 @@ function calculateRpm() {
   let timing_max = Math.floor(((4 * 10000000)/desired_rpm)/pole_pairs);
   let hex_timing_max = timing_max.toString(16);
   document.getElementById("result").innerHTML = hex_timing_max
+}
+
+function ReverseCalculateRpm() {
+  let timing_max = parseInt(document.getElementById("timing_max_id").value, 16);
+  let pole_pairs = document.getElementById("pole_pair_2_ids").value;
+  let current_rpm = Math.floor((4 * 10000000)/(timing_max*pole_pairs));
+  document.getElementById("result_2").innerHTML = current_rpm;
 }
 </script>
